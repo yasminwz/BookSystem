@@ -1,0 +1,47 @@
+﻿@model IEnumerable<BookSystem.Models.Book>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Esses são todos os seus livros registrados</h1>
+
+<p>
+    <a asp-action="Create">Registre aqui seu livro!</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Nome do Livro
+            </th>
+            <th>
+                Preço
+            </th>
+            <th>
+                Número de páginas
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.bookName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.numberOfPages)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.book_id">Editar</a> |
+                <a asp-action="Details" asp-route-id="@item.book_id">Detalhes</a> |
+                <a asp-action="Delete" asp-route-id="@item.book_id">Deletar</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
